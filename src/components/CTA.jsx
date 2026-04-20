@@ -1,14 +1,48 @@
 import React, { useState } from 'react';
-import { ArrowRight, Mail, Phone } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
+
+const API_URL = import.meta.env.VITE_DRAGONDESK_API_URL || 'http://localhost:5000';
 
 const CTA = () => {
   const [formData, setFormData] = useState({ name: '', email: '', studio: '', phone: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In production, wire this to your email/CRM
-    setSubmitted(true);
+    setError('');
+    setLoading(true);
+
+    const nameParts = formData.name.trim().split(' ');
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(' ');
+
+    try {
+      const res = await fetch(`${API_URL}/api/public/lead`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email: formData.email,
+          phone: formData.phone || null,
+          studio: formData.studio,
+          message: formData.message,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || 'Could not submit. Please email us directly.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -104,9 +138,10 @@ const CTA = () => {
                     rows={3}
                   />
                 </div>
-                <button type="submit" className="btn-primary btn-large btn-full">
-                  Request My Demo
-                  <ArrowRight size={18} />
+                {error && <p className="form-error">{error}</p>}
+                <button type="submit" className="btn-primary btn-large btn-full" disabled={loading}>
+                  {loading ? 'Submitting...' : 'Request My Demo'}
+                  {!loading && <ArrowRight size={18} />}
                 </button>
               </form>
             )}
