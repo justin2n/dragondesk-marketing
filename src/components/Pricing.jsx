@@ -1,65 +1,135 @@
 import React, { useState } from 'react';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, Building2, Globe } from 'lucide-react';
 
-const plans = [
+const singlePlans = [
   {
-    name: 'Studio',
-    description: 'Perfect for single-location studios',
-    monthlyPrice: 149,
-    yearlyPrice: 119,
+    name: 'White Belt',
+    belt: 'white',
+    description: 'Core functionality for growing studios',
+    price: 199,
     features: [
-      'Up to 200 members',
-      'Lead & trial management',
-      'Email campaigns',
+      'Member management (leads, trials, members)',
       'Class scheduling & QR check-in',
       'Stripe billing integration',
-      'Analytics dashboard',
       'MyStudio CSV import',
+      'Email campaigns',
+      'Analytics dashboard',
+      'Lead form embeds',
       'Email support',
     ],
     cta: 'Request Demo',
     popular: false,
   },
   {
-    name: 'Pro',
-    description: 'For studios ready to scale',
-    monthlyPrice: 299,
-    yearlyPrice: 239,
+    name: 'Blue Belt',
+    belt: 'blue',
+    description: 'True lifecycle model with advanced marketing',
+    price: 399,
     features: [
-      'Up to 600 members',
-      'Everything in Studio',
+      'Everything in White Belt',
       'SMS campaigns',
       'A/B testing & personalization',
-      'Advanced analytics (ACV, ALTV, Churn)',
-      'Social media scheduling',
       'Audience segmentation',
+      'Social media scheduling',
+      'Automated lifecycle workflows',
+      'Churn prediction & retention tools',
       'Priority support',
     ],
     cta: 'Request Demo',
     popular: true,
   },
   {
-    name: 'Multi-Location',
-    description: 'For gyms with multiple locations',
-    monthlyPrice: 499,
-    yearlyPrice: 399,
+    name: 'Black Belt',
+    belt: 'black',
+    description: 'Advanced business intelligence & analytics',
+    price: 599,
     features: [
-      'Unlimited members',
-      'Everything in Pro',
-      'Multi-location dashboard',
-      'Per-location Stripe accounts',
-      'Location-level analytics',
-      'Custom program configuration',
+      'Everything in White & Blue Belt',
+      'Advanced BI analytics dashboard',
+      'ACV, ALTV & revenue forecasting',
+      'Custom reporting',
+      'Cohort analysis',
       'Dedicated onboarding',
-      'Phone + email support',
+      'Phone + priority support',
+      'Early access to new features',
     ],
-    cta: 'Talk to Sales',
+    cta: 'Request Demo',
     popular: false,
   },
 ];
 
+const multiPlans = [
+  {
+    name: 'Master',
+    belt: 'master',
+    description: 'Core functionality across all locations',
+    price: 599,
+    features: [
+      'Everything in Single Location Black Belt',
+      'Multi-location dashboard',
+      'Per-location Stripe accounts',
+      'Location-level analytics',
+      'Unified member database',
+      'Cross-location reporting',
+      'Dedicated onboarding',
+      'Phone + email support',
+    ],
+    cta: 'Request Demo',
+    popular: false,
+  },
+  {
+    name: 'Grand Master',
+    belt: 'grandmaster',
+    description: 'Full lifecycle model + expanded services',
+    price: 999,
+    features: [
+      'Everything in Master',
+      'Advanced multi-location marketing',
+      'Expanded service offerings',
+      'Cross-location audience segments',
+      'Franchise-level analytics',
+      'Custom program configuration',
+      'Priority multi-location support',
+      'Quarterly business reviews',
+    ],
+    cta: 'Request Demo',
+    popular: true,
+  },
+  {
+    name: 'Professor',
+    belt: 'professor',
+    description: 'Enterprise-grade with custom development',
+    price: null,
+    features: [
+      'Everything in Grand Master',
+      'Custom API development',
+      'White-label options',
+      'Advanced custom analytics',
+      'Dedicated engineering support',
+      'SLA guarantees',
+      'Custom integrations',
+      'Executive business reviews',
+    ],
+    cta: 'Contact Sales',
+    popular: false,
+  },
+];
+
+const BeltBadge = ({ belt }) => {
+  const labels = {
+    white: '🥋 White Belt',
+    blue: '🥋 Blue Belt',
+    black: '🥋 Black Belt',
+    master: '🏆 Master',
+    grandmaster: '🏆 Grand Master',
+    professor: '🎓 Professor',
+  };
+  return <span className={`belt-badge belt-${belt}`}>{labels[belt]}</span>;
+};
+
 const Pricing = () => {
-  const [isYearly, setIsYearly] = useState(true);
+  const [isMulti, setIsMulti] = useState(false);
+  const plans = isMulti ? multiPlans : singlePlans;
 
   return (
     <section className="pricing-section" id="pricing">
@@ -68,22 +138,25 @@ const Pricing = () => {
           <span className="section-label">Pricing</span>
           <h2 className="section-title">Simple, Transparent Pricing</h2>
           <p className="section-subtitle">
-            No hidden fees. No long-term contracts. Scale up as your studio grows.
+            No hidden fees. No long-term contracts. Scale as your studio grows.
           </p>
         </div>
 
-        <div className="pricing-toggle">
-          <span className={!isYearly ? 'active' : ''}>Monthly</span>
+        <div className="pricing-location-toggle">
           <button
-            className={`toggle-switch ${isYearly ? 'yearly' : ''}`}
-            onClick={() => setIsYearly(!isYearly)}
-            aria-label="Toggle yearly billing"
+            className={`location-tab ${!isMulti ? 'active' : ''}`}
+            onClick={() => setIsMulti(false)}
           >
-            <span className="toggle-thumb"></span>
+            <Building2 size={18} />
+            Single Location
           </button>
-          <span className={isYearly ? 'active' : ''}>
-            Yearly <span className="save-badge">Save 20%</span>
-          </span>
+          <button
+            className={`location-tab ${isMulti ? 'active' : ''}`}
+            onClick={() => setIsMulti(true)}
+          >
+            <Globe size={18} />
+            Multi Location
+          </button>
         </div>
 
         <div className="pricing-grid">
@@ -91,17 +164,21 @@ const Pricing = () => {
             <div key={index} className={`pricing-card ${plan.popular ? 'popular' : ''}`}>
               {plan.popular && <div className="popular-badge">Most Popular</div>}
               <div className="plan-header">
+                <BeltBadge belt={plan.belt} />
                 <h3 className="plan-name">{plan.name}</h3>
                 <p className="plan-description">{plan.description}</p>
               </div>
               <div className="plan-price">
-                <span className="currency">$</span>
-                <span className="amount">{isYearly ? plan.yearlyPrice : plan.monthlyPrice}</span>
-                <span className="period">/mo</span>
+                {plan.price ? (
+                  <>
+                    <span className="currency">$</span>
+                    <span className="amount">{plan.price}</span>
+                    <span className="period">/mo</span>
+                  </>
+                ) : (
+                  <span className="amount-custom">Custom</span>
+                )}
               </div>
-              {isYearly && (
-                <p className="billed-yearly">Billed annually</p>
-              )}
               <ul className="plan-features">
                 {plan.features.map((feature, i) => (
                   <li key={i}><Check size={16} /><span>{feature}</span></li>
@@ -118,8 +195,8 @@ const Pricing = () => {
         <div className="pricing-guarantee">
           <div className="guarantee-icon">🛡️</div>
           <div className="guarantee-text">
-            <strong>Custom pricing available</strong>
-            <span>Large studio chains and special use cases — contact us for a tailored quote.</span>
+            <strong>No contracts. Cancel anytime.</strong>
+            <span>All plans include free onboarding and MyStudio migration support.</span>
           </div>
         </div>
       </div>
