@@ -3,6 +3,19 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_DRAGONDESK_API_URL || 'http://localhost:5000';
 
+/** Extract GA client ID from the _ga cookie.
+ *  Cookie format: GA1.1.XXXXXXXXXX.XXXXXXXXXX → client ID is the last two segments.
+ */
+function getGAClientId() {
+  try {
+    const match = document.cookie.match(/_ga=([^;]+)/);
+    if (!match) return null;
+    const parts = match[1].split('.');
+    if (parts.length >= 4) return parts.slice(2).join('.');
+  } catch {}
+  return null;
+}
+
 const CTA = () => {
   const [formData, setFormData] = useState({ name: '', email: '', studio: '', phone: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -29,6 +42,7 @@ const CTA = () => {
           phone: formData.phone || null,
           studio: formData.studio,
           message: formData.message,
+          gaClientId: getGAClientId(),
         }),
       });
 
