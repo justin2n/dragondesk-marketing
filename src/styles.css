@@ -391,6 +391,123 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   position: relative;
 }
 
+/* Screenshot Carousel */
+.screenshot-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.screenshot-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.screenshot-tab {
+  padding: 6px 18px;
+  border-radius: 100px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.screenshot-tab.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.screenshot-tab:not(.active):hover {
+  border-color: var(--color-text-muted);
+  color: var(--color-text);
+}
+
+.screenshot-frame {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  transition: opacity 0.2s ease;
+}
+
+.screenshot-frame.fade-out {
+  opacity: 0;
+}
+
+.screenshot-frame.fade-in {
+  opacity: 1;
+}
+
+.screenshot-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.screenshot-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.screenshot-arrow {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.screenshot-arrow:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.screenshot-caption {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.screenshot-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.screenshot-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.screenshot-dot.active {
+  background: var(--color-primary);
+  width: 24px;
+  border-radius: 4px;
+}
+
 .dashboard-preview {
   background: var(--color-surface);
   border: 1px solid var(--color-border);

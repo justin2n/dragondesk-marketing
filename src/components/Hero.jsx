@@ -1,7 +1,45 @@
-import React from 'react';
-import { ArrowRight, CheckCircle, Users, TrendingUp, Zap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const screenshots = [
+  {
+    src: '/screenshots/dashboard.png',
+    label: 'Dashboard',
+    caption: 'Real-time member stats, program breakdowns, and growth analytics — all at a glance.',
+  },
+  {
+    src: '/screenshots/optimize.png',
+    label: 'Optimize',
+    caption: 'Run A/B tests on any page with a live visual editor. Let data drive your conversions.',
+  },
+  {
+    src: '/screenshots/engage.png',
+    label: 'Engage',
+    caption: 'Build and send targeted email campaigns to the right members at the right time.',
+  },
+];
 
 const Hero = () => {
+  const [active, setActive] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => goTo((active + 1) % screenshots.length), 5000);
+    return () => clearInterval(timer);
+  }, [active]);
+
+  const goTo = (index) => {
+    if (animating) return;
+    setAnimating(true);
+    setTimeout(() => {
+      setActive(index);
+      setAnimating(false);
+    }, 200);
+  };
+
+  const prev = () => goTo((active - 1 + screenshots.length) % screenshots.length);
+  const next = () => goTo((active + 1) % screenshots.length);
+
   return (
     <section className="hero">
       <div className="hero-bg">
@@ -46,78 +84,51 @@ const Hero = () => {
               Request a Demo
               <ArrowRight size={20} />
             </a>
-            <a href="/features" className="btn-video">
+            <a href="#features" className="btn-video">
               See All Features
             </a>
           </div>
         </div>
 
         <div className="hero-visual">
-          <div className="dashboard-preview">
-            <div className="preview-header">
-              <div className="preview-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <span className="preview-title">DragonDesk™ Dashboard</span>
+          <div className="screenshot-carousel">
+            <div className="screenshot-tabs">
+              {screenshots.map((s, i) => (
+                <button
+                  key={i}
+                  className={`screenshot-tab ${active === i ? 'active' : ''}`}
+                  onClick={() => goTo(i)}
+                >
+                  {s.label}
+                </button>
+              ))}
             </div>
-            <div className="preview-content">
-              <div className="preview-sidebar">
-                <div className="sidebar-item active"></div>
-                <div className="sidebar-item"></div>
-                <div className="sidebar-item"></div>
-                <div className="sidebar-item"></div>
-                <div className="sidebar-item"></div>
-              </div>
-              <div className="preview-main">
-                <div className="stats-row">
-                  <div className="stat-card">
-                    <div className="stat-label">Active Members</div>
-                    <div className="stat-value">342</div>
-                    <div className="stat-change positive">+18%</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-label">Trials This Month</div>
-                    <div className="stat-value">47</div>
-                    <div className="stat-change positive">+12%</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-label">MRR</div>
-                    <div className="stat-value">$24.6k</div>
-                    <div className="stat-change positive">+9%</div>
-                  </div>
-                </div>
-                <div className="chart-placeholder">
-                  <div className="chart-bars">
-                    <div className="bar" style={{height: '55%'}}></div>
-                    <div className="bar" style={{height: '72%'}}></div>
-                    <div className="bar" style={{height: '48%'}}></div>
-                    <div className="bar" style={{height: '88%'}}></div>
-                    <div className="bar" style={{height: '65%'}}></div>
-                    <div className="bar" style={{height: '91%'}}></div>
-                    <div className="bar" style={{height: '78%'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div className="floating-card card-1">
-            <div className="card-icon green">
-              <CheckCircle size={18} />
+            <div className={`screenshot-frame ${animating ? 'fade-out' : 'fade-in'}`}>
+              <img
+                src={screenshots[active].src}
+                alt={screenshots[active].label}
+                className="screenshot-img"
+              />
+              <div className="screenshot-nav">
+                <button className="screenshot-arrow" onClick={prev} aria-label="Previous">
+                  <ChevronLeft size={20} />
+                </button>
+                <p className="screenshot-caption">{screenshots[active].caption}</p>
+                <button className="screenshot-arrow" onClick={next} aria-label="Next">
+                  <ChevronRight size={20} />
+                </button>
+              </div>
             </div>
-            <div className="card-text">
-              <strong>Trial Converted</strong>
-              <span>Marcus T. → Adult BJJ Member</span>
-            </div>
-          </div>
 
-          <div className="floating-card card-2">
-            <div className="card-icon red">
-              <TrendingUp size={18} />
-            </div>
-            <div className="card-text">
-              <strong>Conversion Rate</strong>
-              <span>68% trial-to-member this month</span>
+            <div className="screenshot-dots">
+              {screenshots.map((_, i) => (
+                <button
+                  key={i}
+                  className={`screenshot-dot ${active === i ? 'active' : ''}`}
+                  onClick={() => goTo(i)}
+                />
+              ))}
             </div>
           </div>
         </div>
