@@ -2076,3 +2076,98 @@ section {
 .color-indigo .feature-icon { background: rgba(99,102,241,0.1); color: #6366f1; }
 .color-teal .feature-icon { background: rgba(20,184,166,0.1); color: #14b8a6; }
 .color-violet .feature-icon { background: rgba(139,92,246,0.1); color: #8b5cf6; }
+
+/* ========== LOGIN MODAL ========== */
+.login-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.login-modal {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+}
+
+.login-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.login-modal-close:hover { color: #fff; background: #333; }
+
+.login-modal-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.login-modal-subtitle {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+.login-modal-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.login-subdomain-row {
+  display: flex;
+  align-items: center;
+  background: #0d0d0d;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.login-subdomain-row:focus-within { border-color: var(--color-red); }
+
+.login-subdomain-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  min-width: 0;
+}
+.login-subdomain-input::placeholder { color: #555; }
+
+.login-subdomain-suffix {
+  color: #555;
+  font-size: 0.85rem;
+  padding: 0 1rem 0 0;
+  white-space: nowrap;
+}
+
+.login-modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.login-modal-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-full { width: 100%; }
