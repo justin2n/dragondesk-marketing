@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail } from 'lucide-react';
+import { Mail, Flag, Shield } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -60,8 +60,8 @@ const Footer = () => {
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} DragonDesk™. All rights reserved.</p>
           <div className="footer-badges">
-            <span>🇺🇸 Made in USA</span>
-            <span>🥋 Built for Martial Arts</span>
+            <span><Flag size={14} /> Made in USA</span>
+            <span><Shield size={14} /> Built for Martial Arts</span>
           </div>
         </div>
       </div>

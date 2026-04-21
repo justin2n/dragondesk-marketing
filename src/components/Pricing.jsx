@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, ArrowRight, Building2, Globe } from 'lucide-react';
+import { Check, ArrowRight, Building2, Globe, Award, Trophy, GraduationCap, Shield } from 'lucide-react';
 
 const singlePlans = [
   {
@@ -115,16 +115,23 @@ const multiPlans = [
   },
 ];
 
+const beltConfig = {
+  white:       { icon: Award,          label: 'White Belt' },
+  blue:        { icon: Award,          label: 'Blue Belt' },
+  black:       { icon: Award,          label: 'Black Belt' },
+  master:      { icon: Trophy,         label: 'Master' },
+  grandmaster: { icon: Trophy,         label: 'Grand Master' },
+  professor:   { icon: GraduationCap,  label: 'Professor' },
+};
+
 const BeltBadge = ({ belt }) => {
-  const labels = {
-    white: '🥋 White Belt',
-    blue: '🥋 Blue Belt',
-    black: '🥋 Black Belt',
-    master: '🏆 Master',
-    grandmaster: '🏆 Grand Master',
-    professor: '🎓 Professor',
-  };
-  return <span className={`belt-badge belt-${belt}`}>{labels[belt]}</span>;
+  const { icon: Icon, label } = beltConfig[belt] || { icon: Award, label: belt };
+  return (
+    <span className={`belt-badge belt-${belt}`}>
+      <Icon size={12} style={{ display: 'inline', marginRight: 4, verticalAlign: 'middle' }} />
+      {label}
+    </span>
+  );
 };
 
 const Pricing = () => {
@@ -193,7 +200,7 @@ const Pricing = () => {
         </div>
 
         <div className="pricing-guarantee">
-          <div className="guarantee-icon">🛡️</div>
+          <div className="guarantee-icon"><Shield size={28} /></div>
           <div className="guarantee-text">
             <strong>No contracts. Cancel anytime.</strong>
             <span>All plans include free onboarding and MyStudio migration support.</span>

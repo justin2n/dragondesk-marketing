@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_DRAGONDESK_API_URL || 'http://localhost:5000';
 
@@ -73,7 +73,7 @@ const CTA = () => {
           <div className="cta-form-wrapper">
             {submitted ? (
               <div className="form-success">
-                <div className="success-icon">🎉</div>
+                <div className="success-icon"><CheckCircle2 size={48} color="#22c55e" /></div>
                 <h3>Got it! We'll be in touch soon.</h3>
                 <p>A member of our team will reach out within 1 business day to schedule your demo.</p>
               </div>
