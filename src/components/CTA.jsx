@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_DRAGONDESK_API_URL || 'http://localhost:5000';
 
@@ -67,12 +67,6 @@ const CTA = () => {
                   {b}
                 </div>
               ))}
-            </div>
-            <div className="cta-contact-info">
-              <a href="mailto:hello@dragongym.com" className="cta-contact-link">
-                <Mail size={18} />
-                hello@dragongym.com
-              </a>
             </div>
           </div>
 
