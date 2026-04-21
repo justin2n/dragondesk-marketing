@@ -1,11 +1,13 @@
 import React from 'react';
-import { Shield, Zap, Star, Dumbbell } from 'lucide-react';
+import { Shield, Zap, Star, Dumbbell, BoxSelect, Leaf } from 'lucide-react';
 
 const programs = [
   { name: 'Brazilian Jiu-Jitsu', icon: Shield, adult: 'Adult BJJ', kids: 'Kids BJJ', color: '#dc2626' },
   { name: 'Muay Thai & Kickboxing', icon: Zap, adult: 'Adult Muay Thai', kids: 'Kids Muay Thai', color: '#f59e0b' },
-  { name: 'Taekwondo & HKD', icon: Star, adult: 'Adult TKD & HKD', kids: "Children's Martial Arts", color: '#3b82f6' },
-  { name: 'Barbell Club', icon: Dumbbell, adult: 'DG Barbell', kids: null, color: '#10b981' },
+  { name: 'Taekwondo', icon: Star, adult: 'Adult TKD', kids: "Children's Martial Arts", color: '#3b82f6' },
+  { name: 'Boxing', icon: BoxSelect, adult: 'Adult Boxing', kids: 'Kids Boxing', color: '#8b5cf6' },
+  { name: 'Weight Training', icon: Dumbbell, adult: 'Weight Training', kids: null, color: '#10b981' },
+  { name: 'Yoga', icon: Leaf, adult: 'Adult Yoga', kids: 'Youth Yoga', color: '#ec4899' },
 ];
 
 const Programs = () => {
