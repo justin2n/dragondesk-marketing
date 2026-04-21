@@ -149,7 +149,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 16px 0;
+  padding: 22px 0;
   transition: all 0.3s ease;
 }
 
@@ -157,7 +157,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   background: rgba(10, 10, 15, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
-  padding: 12px 0;
+  padding: 16px 0;
 }
 
 .nav-container {
@@ -176,8 +176,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .logo-icon {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
 }
 
 .logo-icon svg {
@@ -186,7 +186,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .logo-text {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -279,7 +279,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .hero .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.4fr;
   gap: 60px;
   align-items: center;
   position: relative;
@@ -1747,8 +1747,8 @@ section {
 
 /* ========== NAVBAR LOGO ========== */
 .nav-logo-img {
-  width: 36px;
-  height: 36px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
 }
 
