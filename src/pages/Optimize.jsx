@@ -77,7 +77,7 @@ const OptimizePage = () => {
           <div className="faq-item" style={{ textAlign: 'center' }}>
             <span className="section-label">Simple pricing</span>
             <div style={{ fontSize: '2.75rem', fontWeight: 800, margin: '0.5rem 0' }}>
-              $50<span style={{ fontSize: '1rem', fontWeight: 500 }}>/month</span>
+              $150<span style={{ fontSize: '1rem', fontWeight: 500 }}>/month</span>
             </div>
             <p style={{ marginTop: 0 }}>Everything included. Cancel anytime.</p>
             <ul style={{ listStyle: 'none', padding: 0, margin: '1.25rem 0', textAlign: 'left' }}>
