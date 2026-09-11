@@ -41,7 +41,23 @@ const OptimizePage = () => {
       if (!res.ok || !data.url) throw new Error(data.error || 'Could not start checkout');
       window.location.href = data.url;
     } catch (err) {
-      setError(err.message || 'Something went wrong. Please try again.');
+      // fetch() rejects with a TypeError when the request never reached the
+      // server at all — unresolvable host, refused connection, or a CORS block.
+      // Its message ("Failed to fetch") is meaningless to a buyer and hides a
+      // misconfiguration from us, so name both sides of it.
+      const isNetworkFailure = err instanceof TypeError;
+      if (isNetworkFailure) {
+        console.error(
+          `[checkout] could not reach ${OPTIMIZE_API}. Check that the host resolves and that this ` +
+          `origin (${window.location.origin}) is in the Optimize app's ALLOWED_ORIGINS.`,
+          err,
+        );
+      }
+      setError(
+        isNetworkFailure
+          ? "We couldn't reach our checkout service. Please try again in a moment — if it keeps happening, email support@dragondeskapp.com and we'll get you set up."
+          : err.message || 'Something went wrong. Please try again.',
+      );
       setLoading(false);
     }
   };
