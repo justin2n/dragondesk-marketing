@@ -48,7 +48,7 @@ const Home = () => {
 
             <h1 className="hero-title">
               Turn more visitors
-              <br />into <span className="highlight">members</span>
+              <br />into <span className="highlight">customers</span>
             </h1>
 
             <p className="hero-subtitle">
