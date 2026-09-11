@@ -30,7 +30,7 @@ const OptimizePage = () => {
       <section className="pricing-hero">
         <div className="container">
           <span className="section-label">DragonDesk: Optimize</span>
-          <h1>Turn more visitors into members</h1>
+          <h1>Turn more visitors into customers</h1>
           <p>
             Run A/B tests, promo bars, and offer modals on your website — and know exactly
             what converts. Purpose-built experimentation for studios, at one simple price.
