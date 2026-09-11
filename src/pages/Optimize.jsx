@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Check, ArrowRight, FlaskConical, LayoutTemplate, Users, BarChart3, Bell, Zap } from 'lucide-react';
+import React from 'react';
+import { Check, FlaskConical, LayoutTemplate, Users, BarChart3, Bell, Zap } from 'lucide-react';
+import OptimizeCheckoutButton from '../components/OptimizeCheckoutButton';
 
-// The Optimize product runs on its own backend; the Buy button asks it to create
-// a Stripe Checkout Session, then redirects the browser to Stripe.
-const OPTIMIZE_API = (import.meta.env.VITE_OPTIMIZE_API_URL || 'https://optimize.dragondeskapp.com').replace(/\/$/, '');
-
+// Deep product page for DragonDesk: Optimize. The homepage carries the same
+// pitch in short form; checkout itself lives in OptimizeCheckoutButton so both
+// entry points share one implementation.
 const features = [
   { icon: FlaskConical, title: 'A/B & multivariate tests', desc: 'Split traffic across variants and let the winner emerge on real conversions — no code deploys.' },
   { icon: LayoutTemplate, title: 'Promo bars & offer modals', desc: 'Launch promo bars and offer modals as experiences or variants, targeted to the right visitors.' },
@@ -25,43 +25,6 @@ const included = [
 ];
 
 const OptimizePage = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const startCheckout = async () => {
-    setError('');
-    setLoading(true);
-    try {
-      const res = await fetch(`${OPTIMIZE_API}/api/billing/public/checkout`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.url) throw new Error(data.error || 'Could not start checkout');
-      window.location.href = data.url;
-    } catch (err) {
-      // fetch() rejects with a TypeError when the request never reached the
-      // server at all — unresolvable host, refused connection, or a CORS block.
-      // Its message ("Failed to fetch") is meaningless to a buyer and hides a
-      // misconfiguration from us, so name both sides of it.
-      const isNetworkFailure = err instanceof TypeError;
-      if (isNetworkFailure) {
-        console.error(
-          `[checkout] could not reach ${OPTIMIZE_API}. Check that the host resolves and that this ` +
-          `origin (${window.location.origin}) is in the Optimize app's ALLOWED_ORIGINS.`,
-          err,
-        );
-      }
-      setError(
-        isNetworkFailure
-          ? "We couldn't reach our checkout service. Please try again in a moment — if it keeps happening, email support@dragondeskapp.com and we'll get you set up."
-          : err.message || 'Something went wrong. Please try again.',
-      );
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="pricing-page">
       <section className="pricing-hero">
@@ -103,10 +66,7 @@ const OptimizePage = () => {
                 </li>
               ))}
             </ul>
-            <button className="btn-primary btn-full" onClick={startCheckout} disabled={loading}>
-              {loading ? 'Redirecting…' : <>Get started <ArrowRight size={16} /></>}
-            </button>
-            {error && <p style={{ color: '#e5484d', marginBottom: 0 }}>{error}</p>}
+            <OptimizeCheckoutButton />
             <p style={{ fontSize: 13, opacity: 0.7, marginBottom: 0 }}>
               After checkout we email you an activation link to create your workspace.
               If you cancel, billing stops at the end of your period and your tests and
