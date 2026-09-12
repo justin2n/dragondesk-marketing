@@ -7,6 +7,7 @@ import Features from './pages/Features';
 import Pricing from './pages/Pricing';
 import Platform from './pages/Platform';
 import Optimize from './pages/Optimize';
+import Support from './pages/Support';
 import OptimizeSuccess from './pages/OptimizeSuccess';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/platform" element={<Platform />} />
             <Route path="/features" element={<Features />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/support" element={<Support />} />
             <Route path="/optimize" element={<Optimize />} />
             <Route path="/optimize/success" element={<OptimizeSuccess />} />
           </Routes>
