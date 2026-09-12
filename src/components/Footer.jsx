@@ -41,6 +41,7 @@ const Footer = () => {
           <div className="footer-links">
             <h4>Company</h4>
             <ul>
+              <li><Link to="/support">Support</Link></li>
               <li><a href="#contact">About</a></li>
               <li><a href="#contact">Contact</a></li>
               <li><a href="#contact">Privacy Policy</a></li>

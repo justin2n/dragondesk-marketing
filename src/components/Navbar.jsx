@@ -90,6 +90,7 @@ const Navbar = () => {
             <Link to="/platform" className={location.pathname === '/platform' ? 'active' : ''}>Full Platform</Link>
             <Link to="/features" className={location.pathname === '/features' ? 'active' : ''}>Features</Link>
             <Link to="/pricing" className={location.pathname === '/pricing' ? 'active' : ''}>Pricing</Link>
+            <Link to="/support" className={location.pathname === '/support' ? 'active' : ''}>Support</Link>
             <a href="#contact">Contact</a>
           </div>
 
