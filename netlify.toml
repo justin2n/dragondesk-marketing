@@ -6,3 +6,17 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Let the DragonDesk: Optimize visual editor read this site's hashed assets.
+#
+# The editor previews pages through its own proxy, which rewrites script and
+# stylesheet URLs so they load same-origin — that path needs no CORS at all.
+# This covers what the proxy cannot rewrite: resources a script requests at
+# runtime, such as a dynamic import() or a fetch() for JSON, which still resolve
+# against this origin and are therefore cross-origin to the editor.
+#
+# Scoped to the Optimize origin rather than "*", so this is not a blanket allow.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "https://optimize.dragondeskapp.com"
