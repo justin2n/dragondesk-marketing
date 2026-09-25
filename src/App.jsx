@@ -9,6 +9,7 @@ import Platform from './pages/Platform';
 import Optimize from './pages/Optimize';
 import Support from './pages/Support';
 import OptimizeSuccess from './pages/OptimizeSuccess';
+import Terms from './pages/Terms';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/support" element={<Support />} />
             <Route path="/optimize" element={<Optimize />} />
             <Route path="/optimize/success" element={<OptimizeSuccess />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </main>
         <Footer />
