@@ -50,6 +50,10 @@ const OptimizeCheckoutButton = ({ label = 'Get started', className = 'btn-primar
       <button className={className} onClick={startCheckout} disabled={loading}>
         {loading ? 'Redirecting…' : <>{label} <ArrowRight size={16} /></>}
       </button>
+      <p style={{ fontSize: 12, opacity: 0.7, margin: '0.5rem 0 0' }}>
+        By continuing to checkout you agree to our <a href="/terms">Terms of Service</a>, including
+        automatic monthly renewal until you cancel and no refunds.
+      </p>
       {error && <p style={{ color: '#e5484d', marginBottom: 0 }}>{error}</p>}
     </>
   );

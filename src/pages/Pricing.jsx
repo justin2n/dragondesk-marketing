@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     question: 'Can I get a refund?',
-    answer: 'We offer a 30-day money-back guarantee on all plans. If you\'re not satisfied, contact us for a full refund.'
+    answer: 'Plans are billed in advance and are non-refundable, so start with the free trial to make sure DragonDesk fits. You can cancel anytime and you won\'t be charged again after your current billing period.'
   },
   {
     question: 'Do you offer nonprofit or military discounts?',
