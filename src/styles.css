@@ -167,6 +167,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .logo {
@@ -191,12 +192,17 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   letter-spacing: -0.02em;
 }
 
+.nav-container > .logo {
+  flex-shrink: 0;
+}
+
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 24px;
 }
 
 .nav-links a {
+  white-space: nowrap;
   font-size: 0.95rem;
   color: var(--color-text-secondary);
   transition: color 0.2s;
@@ -211,6 +217,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   display: flex;
   align-items: center;
   gap: 12px;
+  white-space: nowrap;
 }
 
 .mobile-menu-btn {
@@ -218,7 +225,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   color: var(--color-text);
 }
 
-@media (max-width: 768px) {
+/* Logo, eight links, and two buttons need ~1250px; below that, use the menu. */
+@media (max-width: 1260px) {
   .nav-links, .nav-actions {
     display: none;
   }
@@ -2401,4 +2409,30 @@ section {
 .legal-footnote { color: var(--color-text-muted); margin-top: 48px; }
 @media (max-width: 640px) {
   .legal-toc ol { columns: 1; }
+}
+
+/* AI Sales Rep page: the phone screenshot */
+.sales-rep-phone {
+  display: flex;
+  justify-content: center;
+}
+
+.sales-rep-phone img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  border-radius: 32px;
+  border: 8px solid #1f1f27;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* AI Sales Rep page: four steps on one row on wide screens */
+.sales-rep-steps .migration-inner {
+  max-width: 1080px;
+}
+
+.sales-rep-steps .migration-step {
+  max-width: none;
+  min-width: 200px;
 }

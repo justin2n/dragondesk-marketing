@@ -21,6 +21,7 @@ const Footer = () => {
             <h4>Product</h4>
             <ul>
               <li><Link to="/optimize">Optimize</Link></li>
+              <li><Link to="/ai-sales-rep">AI Sales Rep</Link></li>
               <li><Link to="/platform">Full Platform</Link></li>
               <li><Link to="/features">Features</Link></li>
               <li><Link to="/pricing">Pricing</Link></li>

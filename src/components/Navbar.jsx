@@ -87,6 +87,7 @@ const Navbar = () => {
           <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
             <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
             <Link to="/optimize" className={location.pathname === '/optimize' ? 'active' : ''}>Optimize</Link>
+            <Link to="/ai-sales-rep" className={location.pathname === '/ai-sales-rep' ? 'active' : ''}>AI Sales Rep</Link>
             <Link to="/platform" className={location.pathname === '/platform' ? 'active' : ''}>Full Platform</Link>
             <Link to="/features" className={location.pathname === '/features' ? 'active' : ''}>Features</Link>
             <Link to="/pricing" className={location.pathname === '/pricing' ? 'active' : ''}>Pricing</Link>
