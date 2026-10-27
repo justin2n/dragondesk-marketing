@@ -96,8 +96,11 @@ const CTA = () => {
                 <h3>Request a Demo</h3>
                 <div className="form-row">
                   <div className="form-group">
-                    <label>Your Name</label>
+                    <label htmlFor="demo-name">Your Name</label>
                     <input
+                      id="demo-name"
+                      name="name"
+                      autoComplete="name"
                       type="text"
                       placeholder="John Smith"
                       value={formData.name}
@@ -106,8 +109,11 @@ const CTA = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <label>Email</label>
+                    <label htmlFor="demo-email">Email</label>
                     <input
+                      id="demo-email"
+                      name="email"
+                      autoComplete="email"
                       type="email"
                       placeholder="john@yourstudio.com"
                       value={formData.email}
@@ -118,8 +124,11 @@ const CTA = () => {
                 </div>
                 <div className="form-row">
                   <div className="form-group">
-                    <label>Studio Name</label>
+                    <label htmlFor="demo-studio">Studio Name</label>
                     <input
+                      id="demo-studio"
+                      name="studio"
+                      autoComplete="organization"
                       type="text"
                       placeholder="Elite BJJ Academy"
                       value={formData.studio}
@@ -128,8 +137,11 @@ const CTA = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <label>Phone</label>
+                    <label htmlFor="demo-phone">Phone</label>
                     <input
+                      id="demo-phone"
+                      name="phone"
+                      autoComplete="tel"
                       type="tel"
                       placeholder="(555) 000-0000"
                       value={formData.phone}
@@ -138,8 +150,10 @@ const CTA = () => {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label>Anything you'd like us to know?</label>
+                  <label htmlFor="demo-message">Anything you'd like us to know?</label>
                   <textarea
+                    id="demo-message"
+                    name="message"
                     placeholder="How many locations? Currently using MyStudio? Approximate member count?"
                     value={formData.message}
                     onChange={e => setFormData({...formData, message: e.target.value})}
