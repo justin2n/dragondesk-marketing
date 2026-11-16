@@ -64,17 +64,17 @@ const CTA = () => {
       <div className="container">
         <div className="cta-grid">
           <div className="cta-content">
-            <h2 className="cta-title">Ready to See DragonDesk™ in Action?</h2>
+            <h2 className="cta-title">See DragonDesk in action.</h2>
             <p className="cta-subtitle">
-              Schedule a personalized demo and we'll show you how DragonDesk™
-              can streamline your studio operations in under 30 minutes.
+              In a 30-minute demo we'll show you DragonDesk AI working your website, texts, and
+              calls, and the member management it runs on, set up for a studio like yours.
             </p>
             <div className="cta-bullets">
               {[
-                'Free personalized demo — no sales pressure',
-                'We\'ll help plan your MyStudio migration',
+                'A personal demo, no sales pressure',
+                'Help planning your move from MyStudio',
                 'Setup and onboarding included',
-                'Built for multi-location studios',
+                'Built for single and multi-location studios',
               ].map((b, i) => (
                 <div key={i} className="cta-bullet">
                   <span className="bullet-dot"></span>
@@ -93,10 +93,10 @@ const CTA = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="cta-form">
-                <h3>Request a Demo</h3>
+                <h3>Request a demo</h3>
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="demo-name">Your Name</label>
+                    <label htmlFor="demo-name">Your name</label>
                     <input
                       id="demo-name"
                       name="name"
@@ -124,7 +124,7 @@ const CTA = () => {
                 </div>
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="demo-studio">Studio Name</label>
+                    <label htmlFor="demo-studio">Studio name</label>
                     <input
                       id="demo-studio"
                       name="studio"
@@ -162,7 +162,7 @@ const CTA = () => {
                 </div>
                 {error && <p className="form-error">{error}</p>}
                 <button type="submit" className="btn-primary btn-large btn-full" disabled={loading}>
-                  {loading ? 'Submitting...' : 'Request My Demo'}
+                  {loading ? 'Sending' : 'Request my demo'}
                   {!loading && <ArrowRight size={18} />}
                 </button>
               </form>
