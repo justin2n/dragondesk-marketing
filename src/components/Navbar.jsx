@@ -68,11 +68,24 @@ const Navbar = () => {
     || (to === '/ai' && location.pathname === '/ai-sales-rep')
     || (to === '/platform' && location.pathname === '/features');
 
+  // Over a dark hero (the homepage), the bar turns light-on-dark until the
+  // hero scrolls away.
+  const [overDark, setOverDark] = useState(false);
+
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+      const hero = document.querySelector('.hero-bold');
+      setOverDark(!!hero && window.scrollY < hero.offsetHeight - 64);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -89,7 +102,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${overDark && !isMobileMenuOpen ? 'on-dark' : ''}`}>
         <div className="nav-container">
           <Link to="/" className="logo">
             <img src="/dragondesk-logo.png" alt="DragonDesk" className="nav-logo-img" />

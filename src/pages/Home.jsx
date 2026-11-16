@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import OptimizeCheckoutButton from '../components/OptimizeCheckoutButton';
 import CTA from '../components/CTA';
+import AIConsole from '../components/AIConsole';
 
 // Homepage: DragonDesk as the first AI-native member management platform.
 // DragonDesk AI leads; the platform it runs inside follows; Optimize keeps a
@@ -74,34 +75,35 @@ const optimizeIncluded = ['Unlimited A/B tests', 'Promo bars and offer modals', 
 
 const Home = () => (
   <>
-    <section className="hero">
+    <section className="hero-bold">
       <div className="container">
-        <div className="hero-content">
-          <span className="hero-badge"><span className="badge-dot" />DragonDesk for martial arts studios</span>
-          <h1 className="hero-title">The first AI-native member management platform.</h1>
-          <p className="hero-subtitle">
-            DragonDesk runs your members, billing, attendance, and marketing, with DragonDesk AI built
-            into every part of it. It answers your website, texts back, calls through your scripts, and
-            works beside your staff inside the app.
-          </p>
-          <div className="hero-cta">
-            <a href="#contact" className="btn-primary btn-large">Request a demo <ArrowRight size={18} /></a>
-            <Link to="/ai" className="btn-video">Meet DragonDesk AI</Link>
-          </div>
+        <div className="hb-top">
+          <span className="hb-label">DragonDesk / Built for martial arts studios</span>
+          <span className="hb-label hb-status"><span className="ai-console-dot" />AI on web, text, phone, and app</span>
         </div>
 
-        <div className="hero-visual">
-          <div className="screenshot-frame">
-            <img src="/screenshots/dashboard.png" alt="The DragonDesk dashboard" className="screenshot-img" />
-            <div className="screenshot-nav">
-              <p className="screenshot-caption">Dashboard: members, programs, and growth at a glance.</p>
+        <h1 className="hb-title">
+          The first <span className="hb-accent">AI&#8209;native</span>
+          <br />member management
+          <br />platform.
+        </h1>
+
+        <div className="hb-grid">
+          <div className="hb-copy">
+            <p className="hb-sub">
+              DragonDesk runs your members, billing, attendance, and marketing, and DragonDesk AI works
+              every channel on top of it: answering your website, texting back, calling through your
+              scripts, and building campaigns inside the app. Around the clock, in your studio’s voice.
+            </p>
+            <div className="hb-cta">
+              <a href="#contact" className="btn-primary btn-large">Request a demo <ArrowRight size={18} /></a>
+              <Link to="/ai" className="hb-link">Meet DragonDesk AI <ArrowRight size={16} /></Link>
             </div>
           </div>
+          <AIConsole />
         </div>
-      </div>
 
-      <div className="container hero-spec">
-        <div className="spec-strip">
+        <div className="spec-strip hb-spec">
           {specs.map(s => (
             <div key={s.key} className="spec-cell">
               <span className="spec-key">{s.key}</span>
@@ -112,7 +114,7 @@ const Home = () => (
       </div>
     </section>
 
-    <section className="section section-dark">
+    <section className="section">
       <div className="container">
         <div className="section-header">
           <span className="section-label">01 / AI-native</span>
@@ -205,6 +207,12 @@ const Home = () => (
             The member management underneath replaces your spreadsheets, email tool, billing system,
             and check-in app, built exclusively for martial arts.
           </p>
+        </div>
+        <div className="screenshot-frame platform-shot">
+          <img src="/screenshots/dashboard.png" alt="The DragonDesk dashboard" className="screenshot-img" loading="lazy" />
+          <div className="screenshot-nav">
+            <p className="screenshot-caption">Dashboard: members, programs, and growth at a glance.</p>
+          </div>
         </div>
         <div className="features-grid">
           {platform.map(p => (
