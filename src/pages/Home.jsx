@@ -5,7 +5,7 @@ import OptimizeCheckoutButton from '../components/OptimizeCheckoutButton';
 import CTA from '../components/CTA';
 import AIConsole from '../components/AIConsole';
 
-// Homepage: DragonDesk as the first AI-native member management platform.
+// Homepage: DragonDesk as the AI-native member management platform.
 // DragonDesk AI leads; the platform it runs inside follows; Optimize keeps a
 // buy-today strip because it is the product a studio can start on without a
 // demo call.
@@ -83,7 +83,7 @@ const Home = () => (
         </div>
 
         <h1 className="hb-title">
-          The first <span className="hb-accent">AI&#8209;native</span>
+          The <span className="hb-accent">AI&#8209;native</span>
           <br />member management platform.
         </h1>
 

@@ -13,7 +13,7 @@ const Footer = () => {
               <span>Dragon<span className="logo-accent">Desk</span><sup className="logo-tm">™</sup></span>
             </Link>
             <p className="footer-tagline">
-              The first AI-native member management platform, built exclusively for martial arts studios.
+              The AI-native member management platform, built exclusively for martial arts studios.
             </p>
           </div>
 
