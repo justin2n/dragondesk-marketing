@@ -1,197 +1,252 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight, Check, CheckCircle, FlaskConical, LayoutTemplate,
-  Users, BarChart3, Bell, Zap,
-} from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import OptimizeCheckoutButton from '../components/OptimizeCheckoutButton';
 import CTA from '../components/CTA';
+import ProductReel from '../components/ProductReel';
 
-// DragonDesk: Optimize leads the homepage — it is the product a studio can buy
-// and start using the same day, without a demo call. The full studio platform
-// keeps its own pitch at /platform, linked from the handoff section below.
+// Homepage: DragonDesk as the AI-native member management platform.
+// DragonDesk AI leads; the platform it runs inside follows; Optimize keeps a
+// buy-today strip because it is the product a studio can start on without a
+// demo call.
 
-const capabilities = [
-  { icon: FlaskConical, title: 'A/B & multivariate tests', desc: 'Split traffic across variants and let the winner emerge on real conversions — no code deploys.' },
-  { icon: LayoutTemplate, title: 'Promo bars & offer modals', desc: 'Launch promo bars and offer modals as experiences or variants, targeted to the right visitors.' },
-  { icon: Users, title: 'Audience targeting', desc: 'Build audiences from behavior and experience signals. Start with a built-in All Traffic audience.' },
-  { icon: BarChart3, title: 'Conversion analytics', desc: 'Every variant, promo bar, and modal is measured as a conversion so you always know what works.' },
-  { icon: Bell, title: 'Significance alerts', desc: 'Get notified the moment a test reaches statistical significance — no more guessing when to call it.' },
-  { icon: Zap, title: 'One tracking snippet', desc: 'Drop a single lightweight snippet on your site and start running experiments in minutes.' },
+const specs = [
+  { key: 'Website', val: 'AI sales rep, 24/7' },
+  { key: 'Text', val: 'Two-way SMS with AI replies' },
+  { key: 'Phone', val: 'AI calls, early access' },
+  { key: 'In the app', val: 'Assistant by voice or text' },
 ];
 
-const included = [
-  'Unlimited A/B tests',
-  'Promo bars & offer modals',
-  'Audience builder',
-  'Statistical significance detection',
-  'Conversion analytics dashboard',
-  'Team members & roles',
-  'Domain allow-listing',
+const principles = [
+  {
+    title: 'One AI, one knowledge base',
+    desc: 'Every channel answers from the same source: your programs, schedule, trial offer, and the documents you keep in Google Drive. Update it once and the website, texts, and calls all know.',
+  },
+  {
+    title: 'Works inside your records',
+    desc: 'Conversations land on the contact. A signup by chat or text becomes a lead with its program and location. Nothing to copy between tools, nothing lost between shifts.',
+  },
+  {
+    title: 'Knows when to hand off',
+    desc: 'Billing, cancellations, injuries, or anything it can’t answer go to a person, with an alert. The moment your team replies, the AI steps back.',
+  },
 ];
 
-const Home = () => {
-  return (
-    <>
-      <section className="hero">
-        <div className="hero-bg">
-          <div className="hero-gradient"></div>
-          <div className="hero-pattern"></div>
+const channels = [
+  {
+    medium: 'Website',
+    name: 'AI Sales Rep',
+    desc: 'Greets every visitor, answers questions about your programs, signs them up for your trial, and hands them your booking link so they pick a first class on the spot.',
+    points: ['Leads land in your CRM and your existing website form', 'Measured on booked classes, not chats', 'Full-screen on phones, where most visitors are'],
+    link: { to: '/ai-sales-rep', label: 'See the AI Sales Rep' },
+  },
+  {
+    medium: 'Text',
+    name: 'Two-way SMS',
+    tag: 'New',
+    desc: 'Every text to your studio number lands in Engage, in one conversation per person. Reply yourself, or let DragonDesk AI answer leads, trialers, and members in your studio’s voice.',
+    points: ['Turn AI on for every new conversation, or one at a time', 'Signs newcomers up for your trial by text', 'Alerts for new texts wherever your team is in the app'],
+  },
+  {
+    medium: 'Phone',
+    name: 'AI calls',
+    tag: 'Early access',
+    desc: 'Give a call campaign a goal and a script. The agent holds a natural conversation, lets people interrupt, hangs up politely, and saves the transcript.',
+    points: ['Place a test call to your own phone before anyone else hears it', 'Says it’s an AI assistant, every time', 'Live status and transcript while the call happens'],
+  },
+  {
+    medium: 'In the app',
+    name: 'DragonDesk AI assistant',
+    desc: 'Ask about your studio in plain words, by voice or text. It answers from your data and documents, and builds the audiences and campaigns you describe.',
+    points: ['Talks back in a studio voice you choose', 'Reads your Google Drive knowledge folder', 'Builds audiences and campaigns on request'],
+  },
+];
+
+const platform = [
+  { title: 'Member lifecycle', desc: 'Lead to trialer to member in one profile: programs, belt rank, attendance, and billing.' },
+  { title: 'Billing', desc: 'Stripe subscriptions and invoices, with a separate account per location when each is its own LLC.' },
+  { title: 'Classes and attendance', desc: 'Recurring schedules, instructors, and QR or wallet-pass check-in at the front desk.' },
+  { title: 'Engage', desc: 'Email and SMS campaigns to the audiences you build, plus the two-way Messages inbox.' },
+  { title: 'Pulse', desc: 'Leads ranked by what they do on your website, so your team calls the hottest first.' },
+  { title: 'Your brand', desc: 'Your logo and color across the app, with text that stays readable on any color you pick.' },
+];
+
+const optimizeIncluded = ['Unlimited A/B tests', 'Promo bars and offer modals', 'Audience builder', 'Significance alerts'];
+
+const Home = () => (
+  <>
+    <section className="hero-bold">
+      <div className="container">
+        <div className="hb-top">
+          <span className="hb-label">DragonDesk / Built for martial arts studios</span>
+          <span className="hb-label hb-status"><span className="ai-console-dot" />AI on web, text, phone, and app</span>
         </div>
 
-        <div className="container">
-          <div className="hero-content">
-            <div className="hero-badge">
-              <span className="badge-dot"></span>
-              DragonDesk: Optimize
-            </div>
+        <h1 className="hb-title">
+          The <span className="hb-accent">AI&#8209;native</span>
+          <br />member management platform.
+        </h1>
 
-            <h1 className="hero-title">
-              Turn more visitors
-              <br />into <span className="highlight">customers</span>
-            </h1>
-
-            <p className="hero-subtitle">
-              Run A/B tests, promo bars, and offer modals on your studio's website — and know
-              exactly what converts. Purpose-built experimentation, live in minutes, at one
-              simple price.
+        <div className="hb-grid">
+          <div className="hb-copy">
+            <p className="hb-sub">
+              DragonDesk runs your members, billing, attendance, and marketing, and DragonDesk AI works
+              every channel on top of it: answering your website, texting back, calling through your
+              scripts, and building campaigns inside the app. Around the clock, in your studio’s voice.
             </p>
-
-            <div className="hero-features">
-              <div className="hero-feature">
-                <CheckCircle size={18} />
-                <span>No code deploys — edit and test visually</span>
-              </div>
-              <div className="hero-feature">
-                <CheckCircle size={18} />
-                <span>Know when a test is actually conclusive</span>
-              </div>
-              <div className="hero-feature">
-                <CheckCircle size={18} />
-                <span>$150/month, cancel anytime</span>
-              </div>
-            </div>
-
-            <div className="hero-cta">
-              <OptimizeCheckoutButton label="Get started — $150/mo" className="btn-primary btn-large" />
-              <Link to="/optimize" className="btn-video">
-                See how it works
-              </Link>
+            <div className="hb-cta">
+              <a href="#contact" className="btn-primary btn-large">Request a demo <ArrowRight size={18} /></a>
+              <Link to="/ai" className="hb-link">Meet DragonDesk AI <ArrowRight size={16} /></Link>
             </div>
           </div>
-
-          <div className="hero-visual">
-            <div className="screenshot-frame fade-in">
-              <img
-                src="/screenshots/optimize.png"
-                alt="DragonDesk: Optimize dashboard"
-                className="screenshot-img"
-              />
-              <div className="screenshot-nav">
-                <p className="screenshot-caption">
-                  Run A/B tests on any page with a live visual editor. Let data drive your conversions.
-                </p>
-              </div>
-            </div>
-          </div>
+          <ProductReel />
         </div>
-      </section>
 
-      <section className="features-section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">What you get</span>
-            <h2 className="section-title">Everything you need to test and convert</h2>
+        <div className="spec-strip hb-spec">
+          {specs.map(s => (
+            <div key={s.key} className="spec-cell">
+              <span className="spec-key">{s.key}</span>
+              <span className="spec-val">{s.val}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="section">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">01 / AI-native</span>
+          <h2 className="section-title">Built around AI, not bolted on.</h2>
+          <p className="section-subtitle">
+            Most studio software adds a chatbot to the corner of the screen. In DragonDesk, the AI and
+            the member records are the same system.
+          </p>
+        </div>
+        <div className="principles">
+          {principles.map((p, i) => (
+            <div key={p.title} className="principle">
+              <span className="principle-index">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="section">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">02 / DragonDesk AI</span>
+          <h2 className="section-title">Everywhere people reach your studio.</h2>
+          <p className="section-subtitle">
+            Web, text, phone, and the app itself, all answered by one AI that knows your studio.
+          </p>
+        </div>
+        <div className="channel-list">
+          {channels.map((c, i) => (
+            <div key={c.name} className="channel-row">
+              <span className="channel-index">{String(i + 1).padStart(2, '0')}</span>
+              <div className="channel-head">
+                <span className="channel-medium">{c.medium}</span>
+                <h3 className="channel-name">{c.name}</h3>
+                {c.tag && <span className={`channel-tag ${c.tag === 'New' ? 'new' : ''}`}>{c.tag}</span>}
+              </div>
+              <div className="channel-body">
+                <p>{c.desc}</p>
+                <ul className="channel-points">
+                  {c.points.map(pt => <li key={pt}>{pt}</li>)}
+                </ul>
+                {c.link && <Link to={c.link.to} className="channel-link">{c.link.label} <ArrowRight size={16} /></Link>}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="hero-cta" style={{ marginTop: 40 }}>
+          <Link to="/ai" className="btn-secondary">How DragonDesk AI works <ArrowRight size={16} /></Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="section section-alt">
+      <div className="container">
+        <div className="split">
+          <div className="split-copy">
+            <span className="section-label">03 / Messages</span>
+            <h2 className="section-title">A text at 10pm gets an answer at 10pm.</h2>
             <p className="section-subtitle">
-              Built for studios, not for engineering teams. Launch an experiment, watch real
-              conversions, and ship the winner.
+              DragonDesk AI replies in seconds, signs newcomers up, and flags anything that needs a
+              person. Your team sees every word, and taking over is one reply away.
             </p>
           </div>
-
-          <div className="features-grid">
-            {capabilities.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="feature-card">
-                <div className="feature-icon">
-                  <Icon size={24} />
-                </div>
-                <h3 className="feature-title">{title}</h3>
-                <p className="feature-description">{desc}</p>
-              </div>
-            ))}
+          <div className="screenshot-frame">
+            <img src="/screenshots/messages.jpg" alt="DragonDesk Messages: the AI answering a parent and signing them up for a trial" className="screenshot-img" loading="lazy" width="2000" height="1250" />
+            <div className="screenshot-nav">
+              <p className="screenshot-caption">Engage, Messages: DragonDesk AI signs up a new lead by text. Demo studio.</p>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="comparison-section">
-        <div className="container" style={{ maxWidth: 480 }}>
-          <div className="faq-item" style={{ textAlign: 'center' }}>
-            <span className="section-label">Simple pricing</span>
-            <div style={{ fontSize: '2.75rem', fontWeight: 800, margin: '0.5rem 0' }}>
-              $150<span style={{ fontSize: '1rem', fontWeight: 500 }}>/month</span>
+    <section className="section">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">04 / The platform</span>
+          <h2 className="section-title">Everything the AI works with, in one place.</h2>
+          <p className="section-subtitle">
+            The member management underneath replaces your spreadsheets, email tool, billing system,
+            and check-in app, built exclusively for martial arts.
+          </p>
+        </div>
+        <div className="screenshot-frame platform-shot">
+          <img src="/screenshots/dashboard.jpg" alt="The DragonDesk dashboard" className="screenshot-img" loading="lazy" />
+          <div className="screenshot-nav">
+            <p className="screenshot-caption">Dashboard: leads, trials, and every program at a glance. Demo studio.</p>
+          </div>
+        </div>
+        <div className="features-grid">
+          {platform.map(p => (
+            <div key={p.title} className="feature-card">
+              <h3 className="feature-title">{p.title}</h3>
+              <p className="feature-description">{p.desc}</p>
             </div>
-            <p style={{ marginTop: 0 }}>Everything included. Cancel anytime.</p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: '1.25rem 0', textAlign: 'left' }}>
-              {included.map(item => (
-                <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8, margin: '0.5rem 0' }}>
-                  <Check size={18} className="check-icon" /> {item}
-                </li>
-              ))}
+          ))}
+        </div>
+        <div className="hero-cta" style={{ marginTop: 40 }}>
+          <Link to="/platform" className="btn-secondary">Explore the platform <ArrowRight size={16} /></Link>
+          <Link to="/features" className="btn-video">All features</Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="section section-alt">
+      <div className="container">
+        <div className="buy-strip">
+          <div className="buy-copy">
+            <span className="section-label">Start today</span>
+            <h2>DragonDesk: Optimize</h2>
+            <p>
+              A/B tests, promo bars, and offer modals for your studio’s website, and a clear answer on
+              what converts. No demo call needed: sign up and run your first test today.
+            </p>
+            <Link to="/optimize" className="channel-link">How Optimize works <ArrowRight size={16} /></Link>
+          </div>
+          <div className="buy-price">
+            <div className="buy-amount">$150<small> / month</small></div>
+            <ul className="buy-included">
+              {optimizeIncluded.map(item => <li key={item}><Check size={16} />{item}</li>)}
             </ul>
-            <OptimizeCheckoutButton />
-            <p style={{ fontSize: 13, opacity: 0.7, marginBottom: 0 }}>
-              After checkout we email you an activation link to create your workspace.
-            </p>
+            <OptimizeCheckoutButton label="Get started" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Handoff to the full studio platform, which keeps its own pitch. */}
-      <section className="migration-section">
-        <div className="container">
-          <div className="migration-inner">
-            <span className="migration-badge">Running a whole studio?</span>
-            <h2 className="migration-title">
-              DragonDesk: The Full Platform for Martial Arts Studios
-            </h2>
-            <p className="migration-subtitle">
-              Optimize is one part of DragonDesk. The full platform runs the whole studio —
-              members, billing, attendance, and marketing — built exclusively for martial arts.
-            </p>
-
-            <div className="migration-features">
-              <div className="migration-feature">
-                <Check size={18} />
-                <span>Lead → Trialer → Member tracking</span>
-              </div>
-              <div className="migration-feature">
-                <Check size={18} />
-                <span>Per-location Stripe billing</span>
-              </div>
-              <div className="migration-feature">
-                <Check size={18} />
-                <span>Attendance, belts & program tracking</span>
-              </div>
-              <div className="migration-feature">
-                <Check size={18} />
-                <span>Email & SMS campaigns built in</span>
-              </div>
-            </div>
-
-            <div className="hero-cta" style={{ justifyContent: 'center' }}>
-              <Link to="/platform" className="btn-primary btn-large">
-                Explore the full platform
-                <ArrowRight size={20} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Carries id="contact" — the target of every "Request Demo" link in the
-          navbar and footer, which would otherwise be dead on this page. */}
-      <CTA />
-    </>
-  );
-};
+    {/* Carries id="contact", the target of every "Request a demo" link. */}
+    <CTA />
+  </>
+);
 
 export default Home;

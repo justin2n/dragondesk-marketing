@@ -13,19 +13,20 @@ const Footer = () => {
               <span>Dragon<span className="logo-accent">Desk</span><sup className="logo-tm">™</sup></span>
             </Link>
             <p className="footer-tagline">
-              The all-in-one operations platform built exclusively for martial arts studios.
+              The AI-native member management platform, built exclusively for martial arts studios.
             </p>
           </div>
 
           <div className="footer-links">
             <h4>Product</h4>
             <ul>
-              <li><Link to="/optimize">Optimize</Link></li>
+              <li><Link to="/platform">Platform</Link></li>
+              <li><Link to="/ai">DragonDesk AI</Link></li>
               <li><Link to="/ai-sales-rep">AI Sales Rep</Link></li>
-              <li><Link to="/platform">Full Platform</Link></li>
+              <li><Link to="/optimize">Optimize</Link></li>
               <li><Link to="/features">Features</Link></li>
               <li><Link to="/pricing">Pricing</Link></li>
-              <li><a href="#contact">Request Demo</a></li>
+              <li><a href="#contact">Request a demo</a></li>
             </ul>
           </div>
 
@@ -51,7 +52,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-contact">
-            <h4>Get in Touch</h4>
+            <h4>Get in touch</h4>
             <ul>
               <li>
                 <Mail size={16} />

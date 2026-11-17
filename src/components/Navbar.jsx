@@ -25,7 +25,7 @@ const LoginModal = ({ onClose }) => {
     <div className="login-modal-backdrop" onClick={handleBackdrop}>
       <div className="login-modal">
         <button className="login-modal-close" onClick={onClose} aria-label="Close"><X size={20} /></button>
-        <h3 className="login-modal-title">Log In to DragonDesk™</h3>
+        <h3 className="login-modal-title">Log in to DragonDesk</h3>
         <p className="login-modal-subtitle">Enter your studio's subdomain to continue.</p>
         <form onSubmit={handleSubmit} className="login-modal-form">
           <div className="login-subdomain-row">
@@ -42,7 +42,7 @@ const LoginModal = ({ onClose }) => {
             <span className="login-subdomain-suffix">.dragondeskapp.com</span>
           </div>
           <button type="submit" className="btn-primary btn-full login-modal-btn" disabled={!subdomain.trim()}>
-            Go to Login <ArrowRight size={16} />
+            Continue <ArrowRight size={16} />
           </button>
         </form>
       </div>
@@ -50,17 +50,42 @@ const LoginModal = ({ onClose }) => {
   );
 };
 
+const links = [
+  { to: '/platform', label: 'Platform' },
+  { to: '/ai', label: 'DragonDesk AI' },
+  { to: '/optimize', label: 'Optimize' },
+  { to: '/pricing', label: 'Pricing' },
+  { to: '/support', label: 'Support' },
+];
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const location = useLocation();
+  // The AI section covers the AI Sales Rep page too; Platform covers Features.
+  const isActive = (to) => location.pathname === to
+    || (to === '/ai' && location.pathname === '/ai-sales-rep')
+    || (to === '/platform' && location.pathname === '/features');
+
+  // Over a dark hero (the homepage), the bar turns light-on-dark until the
+  // hero scrolls away.
+  const [overDark, setOverDark] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+      const hero = document.querySelector('.hero-bold');
+      setOverDark(!!hero && window.scrollY < hero.offsetHeight - 64);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -77,7 +102,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${overDark && !isMobileMenuOpen ? 'on-dark' : ''}`}>
         <div className="nav-container">
           <Link to="/" className="logo">
             <img src="/dragondesk-logo.png" alt="DragonDesk" className="nav-logo-img" />
@@ -85,19 +110,19 @@ const Navbar = () => {
           </Link>
 
           <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
-            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
-            <Link to="/optimize" className={location.pathname === '/optimize' ? 'active' : ''}>Optimize</Link>
-            <Link to="/ai-sales-rep" className={location.pathname === '/ai-sales-rep' ? 'active' : ''}>AI Sales Rep</Link>
-            <Link to="/platform" className={location.pathname === '/platform' ? 'active' : ''}>Full Platform</Link>
-            <Link to="/features" className={location.pathname === '/features' ? 'active' : ''}>Features</Link>
-            <Link to="/pricing" className={location.pathname === '/pricing' ? 'active' : ''}>Pricing</Link>
-            <Link to="/support" className={location.pathname === '/support' ? 'active' : ''}>Support</Link>
-            <a href="#contact">Contact</a>
+            {links.map(({ to, label }) => (
+              <Link key={to} to={to} className={isActive(to) ? 'active' : ''}>{label}</Link>
+            ))}
+            {/* Phones and tablets: the account actions live in the menu. */}
+            <div className="nav-menu-actions">
+              <button className="btn-secondary" onClick={() => setShowLoginModal(true)}>Log in</button>
+              <a href="#contact" className="btn-primary">Request a demo</a>
+            </div>
           </div>
 
           <div className="nav-actions">
-            <button className="btn-secondary" onClick={() => setShowLoginModal(true)}>Log In</button>
-            <a href="#contact" className="btn-primary">Request Demo</a>
+            <button className="btn-secondary" onClick={() => setShowLoginModal(true)}>Log in</button>
+            <a href="#contact" className="btn-primary">Request a demo</a>
           </div>
 
           <button

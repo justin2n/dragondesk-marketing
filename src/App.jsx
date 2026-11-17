@@ -11,6 +11,7 @@ import Support from './pages/Support';
 import OptimizeSuccess from './pages/OptimizeSuccess';
 import Terms from './pages/Terms';
 import SalesRep from './pages/SalesRep';
+import AIPage from './pages/AI';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/support" element={<Support />} />
             <Route path="/optimize" element={<Optimize />} />
+            <Route path="/ai" element={<AIPage />} />
             <Route path="/ai-sales-rep" element={<SalesRep />} />
             <Route path="/optimize/success" element={<OptimizeSuccess />} />
             <Route path="/terms" element={<Terms />} />

@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react
 
 const screenshots = [
   {
-    src: '/screenshots/dashboard.png',
+    src: '/screenshots/dashboard.jpg',
     label: 'Dashboard',
     caption: 'Real-time member stats, program breakdowns, and growth analytics — all at a glance.',
   },
@@ -13,7 +13,7 @@ const screenshots = [
     caption: 'Run A/B tests on any page with a live visual editor. Let data drive your conversions.',
   },
   {
-    src: '/screenshots/engage.png',
+    src: '/screenshots/engage.jpg',
     label: 'Engage',
     caption: 'Build and send targeted email campaigns to the right members at the right time.',
   },
@@ -51,17 +51,18 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-badge">
             <span className="badge-dot"></span>
-            Built exclusively for Martial Arts Studios
+            The DragonDesk platform
           </div>
 
           <h1 className="hero-title">
-            The CRM Built for
-            <br /><span className="highlight">Martial Arts</span> Studios
+            Member management for
+            <br /><span className="highlight">martial arts</span>, with AI built in.
           </h1>
 
           <p className="hero-subtitle">
-            Manage leads, trialers, and members. Automate your marketing. Track billing.
-            Monitor attendance. All in one platform — so you can focus on teaching, not admin.
+            Leads, trialers, and members. Billing, attendance, and marketing. And DragonDesk AI
+            answering your website, texts, and calls from the same records, so you can focus on
+            teaching, not admin.
           </p>
 
           <div className="hero-features">
@@ -81,11 +82,11 @@ const Hero = () => {
 
           <div className="hero-cta">
             <a href="#contact" className="btn-primary btn-large">
-              Request a Demo
-              <ArrowRight size={20} />
+              Request a demo
+              <ArrowRight size={18} />
             </a>
             <a href="#features" className="btn-video">
-              See All Features
+              See all features
             </a>
           </div>
         </div>

@@ -2,10 +2,16 @@ import React from 'react';
 import {
   Users, Target, Mail, CreditCard, Calendar,
   BarChart3, QrCode, Building2, MessageSquare,
-  Download, Shield, TrendingUp
+  Download, Shield, TrendingUp, Sparkles
 } from 'lucide-react';
 
 const features = [
+  {
+    icon: Sparkles,
+    title: 'DragonDesk AI',
+    description: 'One AI on your website, your texts, and your calls, plus an assistant inside the app. It answers from your studio\'s knowledge and hands off to your team when a person should step in.',
+    color: 'red'
+  },
   {
     icon: Users,
     title: 'Full Member Lifecycle',
@@ -20,8 +26,8 @@ const features = [
   },
   {
     icon: Mail,
-    title: 'Email & SMS Campaigns',
-    description: 'Send targeted campaigns by program, belt rank, or status. Build audiences, A/B test your messaging, and track conversions.',
+    title: 'Email, SMS & Messages',
+    description: 'Send targeted campaigns by program, belt rank, or status, and hold two-way text conversations in one inbox, with AI replies when you want them.',
     color: 'blue'
   },
   {
@@ -87,8 +93,7 @@ const Features = () => {
         <div className="section-header">
           <span className="section-label">Features</span>
           <h2 className="section-title">
-            Everything to Run Your
-            <br />Martial Arts Business
+            Everything to run your martial arts business
           </h2>
           <p className="section-subtitle">
             Stop switching between five different apps. DragonDesk™ replaces your
