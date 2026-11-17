@@ -180,18 +180,11 @@ const Home = () => (
               person. Your team sees every word, and taking over is one reply away.
             </p>
           </div>
-          <div className="mock" aria-label="Illustration of a text conversation in DragonDesk Messages">
-            <div className="mock-head">
-              <strong>Messages</strong>
-              <span className="mock-status">DragonDesk AI on</span>
+          <div className="screenshot-frame">
+            <img src="/screenshots/messages.jpg" alt="DragonDesk Messages: the AI answering a parent and signing them up for a trial" className="screenshot-img" loading="lazy" width="2000" height="1250" />
+            <div className="screenshot-nav">
+              <p className="screenshot-caption">Engage, Messages: DragonDesk AI signs up a new lead by text. Demo studio.</p>
             </div>
-            <div className="mock-body">
-              <div className="mock-msg in"><p>Hi, do you have kids classes on Saturdays?</p><span>Contact · 9:58 PM</span></div>
-              <div className="mock-msg out ai"><p>Hi, I’m the studio’s automated assistant. Yes, Kids BJJ runs Saturdays at 10am. Want me to set up a free trial class?</p><span>DragonDesk AI · 9:58 PM</span></div>
-              <div className="mock-msg in"><p>Yes please, for my son Leo</p><span>Contact · 9:59 PM</span></div>
-              <div className="mock-msg out ai"><p>Great. What’s your name and email so I can get Leo signed up?</p><span>DragonDesk AI · 9:59 PM</span></div>
-            </div>
-            <div className="mock-foot"><span>Illustration</span><span>New lead created on signup</span></div>
           </div>
         </div>
       </div>
@@ -208,9 +201,9 @@ const Home = () => (
           </p>
         </div>
         <div className="screenshot-frame platform-shot">
-          <img src="/screenshots/dashboard.png" alt="The DragonDesk dashboard" className="screenshot-img" loading="lazy" />
+          <img src="/screenshots/dashboard.jpg" alt="The DragonDesk dashboard" className="screenshot-img" loading="lazy" />
           <div className="screenshot-nav">
-            <p className="screenshot-caption">Dashboard: members, programs, and growth at a glance.</p>
+            <p className="screenshot-caption">Dashboard: leads, trials, and every program at a glance. Demo studio.</p>
           </div>
         </div>
         <div className="features-grid">

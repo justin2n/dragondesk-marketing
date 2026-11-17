@@ -8,37 +8,47 @@ import React, { useEffect, useRef, useState } from 'react';
 // (height follows from the 16:9 frame). Bracket boxes are fractions of the
 // frame at the end of the move. Captions describe shipped features.
 
-const SCENE_MS = 5200;
+const SCENE_MS = 5000;
+
+// Screens captured from a demo studio (fictional people) running the current
+// app, plus the live website agent on dragongym.com.
+const APP = 2880 / 1800;
 
 const SCENES = [
+  {
+    view: 'Desktop view', title: 'Text',
+    src: '/reel/messages.jpg', aspect: APP,
+    from: { x: 0.18, y: 0.02, w: 0.82 }, to: { x: 0.42, y: 0.32, w: 0.56 },
+    box: { l: 0.31, t: 0.55, w: 0.65, h: 0.14 }, tag: 'DragonDesk AI · trial signup',
+    caption: 'A parent texts at 9:22 PM. DragonDesk AI answers, signs them up, and books the class.',
+  },
   {
     view: 'Desktop view', title: 'Website',
     src: '/reel/sales-rep.jpg', aspect: 1800 / 1125,
     from: { x: 0.02, y: 0.04, w: 0.96 }, to: { x: 0.57, y: 0.26, w: 0.42 },
     box: { l: 0.38, t: 0.1, w: 0.6, h: 0.86 }, tag: 'AI Sales Rep · answering',
-    caption: 'A parent asks about kids classes. DragonDesk AI finds the right program and location.',
+    caption: 'On your website, the same AI finds the right program and location for every visitor.',
   },
   {
-    view: 'Desktop view', title: 'Contacts',
-    // Only the header and stat cards: the camera stays above the Programs row.
-    src: '/reel/dashboard.jpg', aspect: 3448 / 1748, clipBottom: 0.605,
-    from: { x: 0.155, y: 0, w: 0.41 }, to: { x: 0.185, y: 0.03, w: 0.375 },
-    box: { l: 0.02, t: 0.45, w: 0.99, h: 0.33 }, tag: 'Leads · captured',
-    caption: 'Every chat, text, and call lands on the contact, in one member record.',
+    view: 'Desktop view', title: 'Phone',
+    src: '/reel/test-call.jpg', aspect: APP,
+    from: { x: 0.08, y: 0.02, w: 0.84 }, to: { x: 0.29, y: 0.13, w: 0.47 },
+    box: { l: 0.1, t: 0.55, w: 0.72, h: 0.16 }, tag: 'AI call · live transcript',
+    caption: 'AI calls follow your script and say they’re AI. Test one on your own phone first.',
   },
   {
-    view: 'Desktop view', title: 'Engage',
-    src: '/reel/engage.jpg', aspect: 3448 / 1742,
-    from: { x: 0.14, y: 0, w: 0.86 }, to: { x: 0.17, y: 0.2, w: 0.62 },
-    box: { l: 0.03, t: 0.37, w: 0.3, h: 0.13 }, tag: 'Audience · built by AI',
-    caption: 'Describe the audience and the campaign. DragonDesk AI builds both.',
+    view: 'Desktop view', title: 'Pulse',
+    src: '/reel/pulse.jpg', aspect: APP,
+    from: { x: 0.16, y: 0.02, w: 0.84 }, to: { x: 0.19, y: 0.17, w: 0.5 },
+    box: { l: 0.02, t: 0.26, w: 0.5, h: 0.62 }, tag: 'Hot lead · on fire',
+    caption: 'Pulse ranks leads by what they do on your site, so your team calls the hottest first.',
   },
   {
-    view: 'Desktop view', title: 'Optimize',
-    src: '/reel/optimize.jpg', aspect: 3448 / 1748,
-    from: { x: 0.14, y: 0, w: 0.86 }, to: { x: 0.38, y: 0.2, w: 0.6 },
-    box: { l: 0.03, t: 0.06, w: 0.93, h: 0.13 }, tag: 'A/B test · 50 / 50',
-    caption: 'Test your website and keep the version that converts.',
+    view: 'Desktop view', title: 'In the app',
+    src: '/reel/assistant.jpg', aspect: APP,
+    from: { x: 0.16, y: 0.02, w: 0.84 }, to: { x: 0.45, y: 0.24, w: 0.55 },
+    box: { l: 0.49, t: 0.73, w: 0.37, h: 0.26 }, tag: 'Ask by voice or text',
+    caption: 'Ask DragonDesk AI about your studio, or tell it what to do.',
   },
   {
     view: 'Mobile view', title: 'On a phone', phone: true,
@@ -61,10 +71,17 @@ const reducedMotion = () => typeof window !== 'undefined'
 const ProductReel = () => {
   const [index, setIndex] = useState(0);
   const [cycle, setCycle] = useState(0);
-  // Load each screenshot just before its scene, not all up front.
+  // The first two screenshots load with the page; the rest just after.
   const [loaded, setLoaded] = useState(2);
   const root = useRef(null);
   const visible = useRef(true);
+
+  // Once the first scene is up, fetch the rest so no scene starts before its
+  // screenshot has loaded.
+  useEffect(() => {
+    const t = setTimeout(() => setLoaded(SCENES.length), 1200);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     // Pause while the reel is off screen or the tab is hidden.
@@ -86,7 +103,7 @@ const ProductReel = () => {
   const scene = SCENES[index];
 
   return (
-    <div className="reel" ref={root} aria-label="DragonDesk product tour: website AI, contacts, Engage, Optimize, and mobile">
+    <div className="reel" ref={root} aria-label="DragonDesk product tour: AI texting, website chat, AI calls, Pulse, the in-app assistant, and mobile">
       <div className="reel-stage">
         {SCENES.map((s, i) => {
           const active = i === index;
@@ -151,7 +168,7 @@ const ProductReel = () => {
         </div>
       </div>
 
-      <div className="reel-progress" aria-hidden="true">
+      <div className="reel-progress" aria-hidden="true" style={{ gridTemplateColumns: `repeat(${SCENES.length}, 1fr)` }}>
         {SCENES.map((s, i) => (
           <span key={i} className={i < index ? 'done' : i === index ? 'on' : ''}>
             <i key={i === index ? `p-${cycle}` : undefined} style={{ animationDuration: `${SCENE_MS}ms` }} />

@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react
 
 const screenshots = [
   {
-    src: '/screenshots/dashboard.png',
+    src: '/screenshots/dashboard.jpg',
     label: 'Dashboard',
     caption: 'Real-time member stats, program breakdowns, and growth analytics — all at a glance.',
   },
@@ -13,7 +13,7 @@ const screenshots = [
     caption: 'Run A/B tests on any page with a live visual editor. Let data drive your conversions.',
   },
   {
-    src: '/screenshots/engage.png',
+    src: '/screenshots/engage.jpg',
     label: 'Engage',
     caption: 'Build and send targeted email campaigns to the right members at the right time.',
   },

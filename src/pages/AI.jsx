@@ -99,18 +99,11 @@ const AIPage = () => (
     <section className="section section-alt">
       <div className="container">
         <div className="split">
-          <div className="mock" aria-label="Illustration of a text conversation handed off to staff">
-            <div className="mock-head">
-              <strong>Messages</strong>
-              <span className="channel-tag new">Needs a person</span>
+          <div className="screenshot-frame">
+            <img src="/screenshots/messages.jpg" alt="DragonDesk Messages with AI conversations and a needs-a-person handoff" className="screenshot-img" loading="lazy" width="2000" height="1250" />
+            <div className="screenshot-nav">
+              <p className="screenshot-caption">Messages: AI replies, and a handoff flagged “Needs a person.” Demo studio.</p>
             </div>
-            <div className="mock-body">
-              <div className="mock-msg in"><p>Can I freeze my membership for a month? I hurt my knee.</p><span>Member · 6:12 PM</span></div>
-              <div className="mock-msg out ai"><p>Sorry to hear about your knee. I’ve passed this to the front desk and someone will text you back soon.</p><span>DragonDesk AI · 6:12 PM</span></div>
-              <p className="mock-note">AI handed off: membership freeze, injury</p>
-              <div className="mock-msg out"><p>Hi Sam, this is Jess at the front desk. Yes, we can pause it. Feel better!</p><span>Jess · 6:20 PM</span></div>
-            </div>
-            <div className="mock-foot"><span>Illustration</span><span>AI off after staff reply</span></div>
           </div>
           <div className="split-copy">
             <span className="section-label">02 / Text</span>
@@ -149,18 +142,11 @@ const AIPage = () => (
               <li>Every call and transcript saved to the campaign</li>
             </ul>
           </div>
-          <div className="mock" aria-label="Illustration of a live test call transcript">
-            <div className="mock-head">
-              <strong>Test call</strong>
-              <span className="mock-status">Connected · 0:42</span>
+          <div className="screenshot-frame">
+            <img src="/screenshots/test-call.jpg" alt="A DragonDesk test call with its live transcript" className="screenshot-img" loading="lazy" width="1440" height="1260" />
+            <div className="screenshot-nav">
+              <p className="screenshot-caption">Test call: live status and transcript. Demo studio.</p>
             </div>
-            <div className="mock-body">
-              <div className="mock-line"><span className="mock-who agent">Agent</span><span>Hi Alex, this is Maya, an AI assistant calling from the studio about your free trial. Do you have a quick minute?</span></div>
-              <div className="mock-line"><span className="mock-who">You</span><span>Sure, what’s up?</span></div>
-              <div className="mock-line"><span className="mock-who agent">Agent</span><span>You signed up for a trial class last week. Would Tuesday or Thursday evening work better for your first one?</span></div>
-              <div className="mock-line"><span className="mock-who">You</span><span>Thursday works.</span></div>
-            </div>
-            <div className="mock-foot"><span>Illustration</span><span>Transcript saved</span></div>
           </div>
         </div>
       </div>
@@ -169,16 +155,11 @@ const AIPage = () => (
     <section className="section section-alt">
       <div className="container">
         <div className="split">
-          <div className="mock" aria-label="Illustration of the DragonDesk AI assistant inside the app">
-            <div className="mock-head">
-              <strong>DragonDesk AI</strong>
-              <span>Voice</span>
+          <div className="screenshot-frame">
+            <img src="/screenshots/assistant.jpg" alt="The DragonDesk AI assistant panel inside the app" className="screenshot-img" loading="lazy" width="2000" height="1250" />
+            <div className="screenshot-nav">
+              <p className="screenshot-caption">DragonDesk AI in the app: ask, or tell it what to do. Demo studio.</p>
             </div>
-            <div className="mock-body">
-              <div className="mock-msg out"><p>Make an audience of trialers who haven’t booked a second class.</p><span>You</span></div>
-              <div className="mock-msg in"><p>Done. “Trialers, no second class” is ready in Audiences. Want an email campaign to go with it?</p><span>DragonDesk AI</span></div>
-            </div>
-            <div className="mock-foot"><span>Illustration</span><span>Audience created</span></div>
           </div>
           <div className="split-copy">
             <span className="section-label">04 / In the app</span>
