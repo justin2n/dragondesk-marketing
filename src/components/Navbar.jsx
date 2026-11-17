@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
@@ -70,9 +70,11 @@ const Navbar = () => {
 
   // Over a dark hero (the homepage), the bar turns light-on-dark until the
   // hero scrolls away.
-  const [overDark, setOverDark] = useState(false);
+  const [overDark, setOverDark] = useState(() => location.pathname === '/');
 
-  useEffect(() => {
+  // Layout effect: measured before the browser paints, so the bar never
+  // shows its light style for a frame over the dark hero.
+  useLayoutEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       const hero = document.querySelector('.hero-bold');
