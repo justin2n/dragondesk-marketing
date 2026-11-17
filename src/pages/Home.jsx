@@ -84,8 +84,7 @@ const Home = () => (
 
         <h1 className="hb-title">
           The first <span className="hb-accent">AI&#8209;native</span>
-          <br />member management
-          <br />platform.
+          <br />member management platform.
         </h1>
 
         <div className="hb-grid">

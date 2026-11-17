@@ -1024,13 +1024,13 @@ section { position: relative; }
 }
 
 .hb-title {
-  font-size: clamp(2.6rem, 7.4vw, 7rem);
-  line-height: 0.94;
-  letter-spacing: -0.05em;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
   font-weight: 700;
   color: var(--carbon-ink);
   padding-left: 24px;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
 }
 .hb-accent {
   color: var(--accent);
