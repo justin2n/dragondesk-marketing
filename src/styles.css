@@ -1039,8 +1039,8 @@ section { position: relative; }
 
 .hb-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: 64px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+  gap: 56px;
   align-items: start;
   padding-left: 24px;
 }
@@ -1170,4 +1170,189 @@ section { position: relative; }
   .hb-cta .btn-primary { width: 100%; }
   .ai-console-list li { grid-template-columns: 52px minmax(0, 1fr); }
   .ai-console-time { display: none; }
+}
+
+/* ==========================================================================
+   Hero product reel (16:9): real screenshots with a camera move, an AI scan
+   sweep, a bracketed detail, and a caption, inside an instrument-style HUD.
+   ========================================================================== */
+.reel { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.reel-stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0b0b0d;
+  border: 1px solid var(--carbon-rule);
+  border-radius: var(--radius);
+}
+.reel-scene { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s var(--ease); }
+.reel-scene.is-active { opacity: 1; }
+
+.reel-shot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  transform-origin: 0 0;
+  will-change: transform;
+  filter: saturate(0.92);
+}
+.reel-shot.animate { animation: reel-camera 4.6s cubic-bezier(0.45, 0, 0.2, 1) 0.15s both; }
+@keyframes reel-camera {
+  from { transform: var(--from); }
+  to { transform: var(--to); }
+}
+
+/* A faint dark wash so the HUD and caption read over any screenshot. */
+.reel-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(11, 11, 13, 0.55) 0%, transparent 18%, transparent 62%, rgba(11, 11, 13, 0.85) 100%);
+}
+
+/* Mobile scene */
+.reel-phone-scene { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.reel-backdrop { position: absolute; inset: -4%; width: 108%; height: 108%; max-width: none; object-fit: cover; filter: blur(14px) brightness(0.35) saturate(0.6); }
+.reel-phone {
+  position: relative;
+  height: 88%;
+  aspect-ratio: 600 / 1298;
+  border: 5px solid #1d1d20;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--carbon-rule);
+  margin-top: 4%;
+}
+.reel-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.reel-phone.animate { animation: reel-phone-in 1s var(--ease) 0.1s both; }
+@keyframes reel-phone-in {
+  from { transform: translateY(14%) scale(0.94); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+/* Overlay: scan, bracket, caption */
+.reel-overlay { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.reel-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 22%;
+  top: -22%;
+  background: linear-gradient(180deg, transparent, rgba(220, 38, 38, 0.10) 70%, rgba(248, 113, 113, 0.55) 100%);
+  border-bottom: 1px solid rgba(248, 113, 113, 0.8);
+  animation: reel-scan 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+@keyframes reel-scan {
+  from { top: -22%; opacity: 1; }
+  85% { opacity: 1; }
+  to { top: 100%; opacity: 0; }
+}
+.reel-box {
+  position: absolute;
+  border: 1px solid rgba(248, 113, 113, 0.9);
+  background: rgba(220, 38, 38, 0.06);
+  animation: reel-box-in 0.5s var(--ease) 2.2s both;
+}
+.reel-box::before,
+.reel-box::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--accent);
+}
+.reel-box::before { top: -3px; left: -3px; border-right: none; border-bottom: none; }
+.reel-box::after { bottom: -3px; right: -3px; border-left: none; border-top: none; }
+@keyframes reel-box-in {
+  from { opacity: 0; transform: scale(1.08); }
+  to { opacity: 1; transform: none; }
+}
+.reel-box-phone { left: 39%; top: 14%; width: 22%; height: 72%; }
+.reel-tag {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: -1px;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  padding: 3px 7px;
+}
+.reel-box[data-tag='below'] .reel-tag { bottom: auto; top: calc(100% + 6px); }
+.reel-box[data-tag='inside'] .reel-tag { bottom: auto; top: auto; bottom: 8px; left: auto; right: 8px; }
+.reel-caption {
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  margin: 0;
+  padding: 9px 12px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--carbon-ink);
+  max-width: 36ch;
+  background: rgba(11, 11, 13, 0.88);
+  border-left: 2px solid var(--accent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: reel-caption-in 0.6s var(--ease) 2.6s both;
+}
+@keyframes reel-caption-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* HUD */
+.reel-hud { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.reel-corner { position: absolute; width: 12px; height: 12px; border: 1px solid rgba(237, 236, 232, 0.55); }
+.reel-corner.tl { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.reel-corner.tr { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+.reel-corner.bl { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+.reel-corner.br { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+.reel-ruler {
+  position: absolute;
+  top: 36px;
+  bottom: 36px;
+  left: 8px;
+  width: 6px;
+  background: repeating-linear-gradient(180deg, rgba(237, 236, 232, 0.35) 0 1px, transparent 1px 12px);
+}
+.reel-top {
+  position: absolute;
+  top: 12px;
+  left: 28px;
+  right: 28px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(237, 236, 232, 0.8);
+}
+.reel-view { display: inline-flex; align-items: center; gap: 6px; }
+.reel-dot { width: 6px; height: 6px; background: #22c55e; animation: blink 1.6s steps(1) infinite; }
+
+.reel-progress { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.reel-progress span { height: 2px; background: var(--carbon-rule); overflow: hidden; }
+.reel-progress span.done { background: var(--carbon-ink-2); }
+.reel-progress i { display: block; height: 100%; width: 0; background: var(--accent); }
+.reel-progress span.on i { animation: reel-progress linear both; }
+@keyframes reel-progress { from { width: 0; } to { width: 100%; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-box, .reel-caption, .reel-dot, .reel-progress span.on i { animation: none; }
+  .reel-progress span.on i { width: 100%; }
+}
+@media (max-width: 640px) {
+  /* Too small for a caption over the screenshot; the tag carries the scene. */
+  .reel-caption { display: none; }
+  .reel-top { left: 22px; right: 22px; }
+  .reel-tag { font-size: 0.5625rem; }
 }

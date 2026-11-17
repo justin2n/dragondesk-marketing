@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import OptimizeCheckoutButton from '../components/OptimizeCheckoutButton';
 import CTA from '../components/CTA';
-import AIConsole from '../components/AIConsole';
+import ProductReel from '../components/ProductReel';
 
 // Homepage: DragonDesk as the AI-native member management platform.
 // DragonDesk AI leads; the platform it runs inside follows; Optimize keeps a
@@ -99,7 +99,7 @@ const Home = () => (
               <Link to="/ai" className="hb-link">Meet DragonDesk AI <ArrowRight size={16} /></Link>
             </div>
           </div>
-          <AIConsole />
+          <ProductReel />
         </div>
 
         <div className="spec-strip hb-spec">
