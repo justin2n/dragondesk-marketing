@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- The homepage opens on a dark hero. Paint the page dark until the app
+         renders it, so the light background never flashes first. -->
+    <script>if (location.pathname === '/') document.documentElement.classList.add('boot-dark');</script>
+    <style>html.boot-dark, html.boot-dark body { background: #141416; }</style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEX5D3DQ2G"></script>
     <script>
@@ -21,7 +25,7 @@
     <title>DragonDesk | The AI-native member management platform for martial arts studios</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=optional" rel="stylesheet">
   </head>
   <body>
     <div id="root"></div>
