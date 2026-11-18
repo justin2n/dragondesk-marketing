@@ -11,10 +11,10 @@ import ProductReel from '../components/ProductReel';
 // demo call.
 
 const specs = [
-  { key: 'Website', val: 'AI sales rep, 24/7' },
-  { key: 'Text', val: 'Two-way SMS with AI replies' },
-  { key: 'Phone', val: 'AI calls, early access' },
-  { key: 'In the app', val: 'Assistant by voice or text' },
+  { key: 'Your website', val: 'Questions answered, trials booked' },
+  { key: 'Texts', val: 'Replies in seconds, even at 10 PM' },
+  { key: 'Phone calls', val: 'Follow-up calls, early access' },
+  { key: 'Front desk', val: 'Members, billing, and check-in' },
 ];
 
 const principles = [
@@ -78,25 +78,25 @@ const Home = () => (
     <section className="hero-bold">
       <div className="container">
         <div className="hb-top">
-          <span className="hb-label">DragonDesk / Built for martial arts studios</span>
-          <span className="hb-label hb-status"><span className="ai-console-dot" />AI on web, text, phone, and app</span>
+          <span className="hb-label">DragonDesk / Studio software for martial arts schools</span>
+          <span className="hb-label hb-status"><span className="ai-console-dot" />Working while you teach</span>
         </div>
 
         <h1 className="hb-title">
-          The <span className="hb-accent">AI&#8209;native</span>
-          <br />member management platform.
+          Every inquiry answered,
+          <br /><span className="hb-accent">even mid&#8209;class.</span>
         </h1>
 
         <div className="hb-grid">
           <div className="hb-copy">
             <p className="hb-sub">
-              DragonDesk runs your members, billing, attendance, and marketing, and DragonDesk AI works
-              every channel on top of it: answering your website, texting back, calling through your
-              scripts, and building campaigns inside the app. Around the clock, in your studio’s voice.
+              DragonDesk answers the questions, texts, and website visitors your studio gets, day or
+              night, and signs new families up for a trial class. Your members, billing, attendance,
+              and marketing live in the same place, so you spend your time on the mat, not at the desk.
             </p>
             <div className="hb-cta">
               <a href="#contact" className="btn-primary btn-large">Request a demo <ArrowRight size={18} /></a>
-              <Link to="/ai" className="hb-link">Meet DragonDesk AI <ArrowRight size={16} /></Link>
+              <Link to="/ai" className="hb-link">See how it works <ArrowRight size={16} /></Link>
             </div>
           </div>
           <ProductReel />

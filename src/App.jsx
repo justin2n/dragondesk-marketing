@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -14,6 +14,12 @@ import SalesRep from './pages/SalesRep';
 import AIPage from './pages/AI';
 
 function App() {
+  // Runs after the first render has painted, so the hero already covers the
+  // top of the page when the pre-render dark background (index.html) goes.
+  useEffect(() => {
+    document.documentElement.classList.remove('boot-dark');
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="app">
