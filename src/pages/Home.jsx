@@ -5,7 +5,7 @@ import OptimizeCheckoutButton from '../components/OptimizeCheckoutButton';
 import CTA from '../components/CTA';
 import ProductReel from '../components/ProductReel';
 
-// Homepage: studio management software that answers every inquiry.
+// Homepage: DragonDesk as the AI-native member management platform.
 // DragonDesk AI leads; the platform it runs inside follows; Optimize keeps a
 // buy-today strip because it is the product a studio can start on without a
 // demo call.
@@ -116,7 +116,7 @@ const Home = () => (
     <section className="section">
       <div className="container">
         <div className="section-header">
-          <span className="section-label">01 / Why it’s different</span>
+          <span className="section-label">01 / AI-native</span>
           <h2 className="section-title">Built around AI, not bolted on.</h2>
           <p className="section-subtitle">
             Most studio software adds a chatbot to the corner of the screen. In DragonDesk, the AI and

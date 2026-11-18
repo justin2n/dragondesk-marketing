@@ -13,7 +13,7 @@ const Footer = () => {
               <span>Dragon<span className="logo-accent">Desk</span><sup className="logo-tm">™</sup></span>
             </Link>
             <p className="footer-tagline">
-              Studio software built exclusively for martial arts schools, with AI that answers every inquiry.
+              The AI-native member management platform, built exclusively for martial arts studios.
             </p>
           </div>
 
